@@ -5,7 +5,7 @@ So go ahead, recreate you imaginations in the air !
 ### Cloning
 Use the link below to close this repository to your machine.
 ```
-asd
+https://github.com/Severus11/Virtual-Air-Painting.git
 ```
 
 ### Pre-requisites 
