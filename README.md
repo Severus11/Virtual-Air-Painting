@@ -2,8 +2,11 @@
 
 This is an application that enables one to **vitually paint in the air** using any object of a chosen color by the user. It is **developed using openCV**.
 So go ahead, recreate you imaginations in the air !
+
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
+
 [![Python 3.5](https://img.shields.io/badge/python-3.5-teal.svg)](https://www.python.org/downloads/release/python-350/)
+
 ### Cloning
 Use the link below to close this repository to your machine.
 ```
