@@ -1,7 +1,7 @@
 # Virtual Air Painting
 
 This is an application that enables one to **vitually paint in the air** using any object of a chosen color by the user. It is **developed using openCV**.
-So go ahead, recreate you imaginations in the air !
+So go ahead, recreate your imaginations in the air !
 
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 
