@@ -1,0 +1,18 @@
+<HTML lang ='en'>
+    <html>
+        <title>Virtual Air Paint </title>
+        <head>
+            <link rel ='stylesheet' type="text/css" href= "{{ url_for('static',filename='style.css') }}">
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+        </head>
+    
+        <h2>
+            Welcome to Virtual Air Paint
+        </h2>
+        <p class ="p1">powered by <span style="color: white; font-family: sans-serif;">OpenCV and Mediapipe</span></p>    
+    
+        <body>
+            <img id ='bg' width=1280px height=720px src = "{{url_for('video_feed')}}">
+        </body>
+    </html>
