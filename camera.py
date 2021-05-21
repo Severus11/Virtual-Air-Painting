@@ -36,6 +36,7 @@ class VideoCamera():
         self.previousT = previousT
         self.default_overlay= default_overlay
         self.draw_color = draw_color
+
     def __del__(self):
         self.video.release()
     
@@ -107,9 +108,9 @@ class VideoCamera():
 
 
 def main():
-    draw = VideoCamera()
+    my_paint = VideoCamera()
     while True:
-        my_frame, my_fps = draw.ret_frame()
+        my_frame, my_fps = my_paint.ret_frame()
         
         cv2.putText(my_frame, 'Client FPS:' + str(int(my_fps)), (10,670), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(255,0,0), thickness=2)
         cv2.imshow('paint', my_frame)
