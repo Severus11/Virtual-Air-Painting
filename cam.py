@@ -5,7 +5,7 @@ import track_hands as TH
 
 class VideoCamera():
     def __init__(self,overlay_image=[],draw_color =(255,200,100)):
-        self.cap = cv2.VideoCapture(0)
+        self.cap = cv2.VideoCapture(0,cv2.CAP_DSHOW)
         self.cap.set(3, 1280)
         self.cap.set(4,720)
         self.xp =0
@@ -18,16 +18,22 @@ class VideoCamera():
         self.eraser_thickness =100
         self.overlay_image = overlay_image  
         self.draw_color = draw_color
+        #self.frame = frame  
         self.detector = TH.handDetector(min_detection_confidence=0.85)
         self.image_canvas = np.zeros((720,1280,3), np.uint8)
         self.default_overlay = overlay_image[0]
-        self.frame[0:125,0:1280] = self.default_overlay
+        #self.frame[0:125,0:1280] = self.default_overlay
 
     def __del__(self):
         self.cap.release()
     
+    def set_overlay(self,frame, overlay_image):
+        self.default_overlay = overlay_image[0]
+        frame[0:125,0:1280] = self.default_overlay
+        return frame
+
     def get_frame(self, frame, overlay_image):
-        
+        frame[0:125,0:1280] = self.default_overlay
         frame = self.detector.findHands(frame, draw=True)
         landmark_list = self.detector.findPosition(frame, draw =False)
 
@@ -83,6 +89,8 @@ class VideoCamera():
                 
                 self.xp , self.yp = self.x1, self.y1
 
+        ####                
+        frame[0:125,0:1280] = self.default_overlay 
         img_gray = cv2.cvtColor(self.image_canvas, cv2.COLOR_BGR2GRAY)
         _, imginv= cv2.threshold(img_gray, 50, 255, cv2.THRESH_BINARY_INV)
         imginv = cv2.cvtColor(imginv, cv2.COLOR_GRAY2BGR)
@@ -104,12 +112,13 @@ def main():
         image = cv2.imread(f'{header_img}/{i}')
         overlay_image.append(image)
 
-    cam1 = VideoCamera()
+    cam1 = VideoCamera(overlay_image=overlay_image)
 
     while True:
         ret, input_img = cam1.cap.read()
         input_img = cv2.flip(input_img,1)
         #detector= TH.handDetector(min_detection_confidence=.85)
+        #my_frame = cam1.set_overlay(input_img, overlay_image= overlay_image)
         my_frame = cam1.get_frame(frame=input_img, overlay_image= overlay_image)   
      
         cv2.imshow('out', my_frame)
