@@ -23,5 +23,5 @@ $ pip3 install -r requirements.txt
 - Edit the area, according to the size of the object for ease of usage
 
 ### Sample Output:
-![Virtual Air paint Sample](https://media.giphy.com/media/Sw6lSAuqiruc65RAGC/giphy.gif)
+![Virtual Air paint Sample](https://media.giphy.com/media/6XCOlDmveuVengwuOx/giphy.gif)
 
