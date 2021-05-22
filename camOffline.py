@@ -30,9 +30,7 @@ class VideoCamera():
         frame[0:125,0:1280] = self.default_overlay
         return frame
 
-    def get_frame(self, overlay_image):
-        _,frame = self.cap.read()
-        frame = cv2.flip(frame, 1)
+    def get_frame(self, frame, overlay_image):
         frame[0:125,0:1280] = self.default_overlay
         frame = self.detector.findHands(frame, draw=True)
         landmark_list = self.detector.findPosition(frame, draw =False)
@@ -94,9 +92,6 @@ class VideoCamera():
         imginv = cv2.cvtColor(imginv, cv2.COLOR_GRAY2BGR)
         frame = cv2.bitwise_and(frame, imginv)
         frame =cv2.bitwise_or(frame, self.image_canvas)
-
-        _,jpeg =cv2.imencode('.jpg', frame)
-        return jpeg.tobytes()
 
 def main():
 
